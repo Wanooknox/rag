@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "starting": {
+      "look": "There are trees, many trees, much trees. So many trees, that there is no way out. There is a sign hanging on a tree which say 'TODO: implement an exit'.",
+      "go": []
+    }
+  }
+]
