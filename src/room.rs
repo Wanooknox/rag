@@ -1,4 +1,4 @@
-//mod interaction;
+use crate::interaction::command;
 
 pub mod room {
     struct Room {
