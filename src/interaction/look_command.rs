@@ -14,7 +14,6 @@ impl LookCommand {
 
 impl Command for LookCommand {
     fn execute(&self) {
-        // TODO: print look text
-        println!("lion");
+        println!("{}",self.look_text);
     }
 }
