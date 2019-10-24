@@ -17,9 +17,12 @@
 - Rooms shall be encoded into JSON of the form:
 ```
 {
-    "<roomId>" : {
-        "go" : [ {"Direction":"<roomId>"} ],
-        "looks" : "<look falvour text>"
+    "<room_id>": {
+        "description": "<room_entry_description>",
+        "look": "<what_can_be_seen>",
+        "go": [
+            {"<direction>": "<room_id>"}
+        ]
     },
     ...
 }
