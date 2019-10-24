@@ -1,0 +1,37 @@
+{
+    "start": {
+        "description": "There are trees, many trees, much trees, and they make a dense wall. Without any equipment, the only way out is a small hole in the trees to the north.",
+        "look": "Nothing to see here 'cept the trees.",
+        "go": [
+            {"north": "path"}
+        ]
+    },
+    "path": {
+        "description": "The path extends north and south. Off to the south is a dense wall of trees with a small entrance. To the north is a cabin.",
+        "look": "There is a hollowed out log with some things in it including a sign that says 'TODO: add ability to pick things up'.",
+        "go": [
+            {"north": "cabin"},
+            {"south": "start"}
+        ]
+    },
+    "cabin": {
+        "description": "The cabin is small and cozy. The main room has a bed, a couch, and a mini kitchen off to the side. The outhouse must be elsewhere",
+        "look": "The cabin is full of typical cabin-y things, nothing out of the ordinary. Except- ... There is a light coming from the kitchen cupboard.",
+        "go": [
+            {"south": "path"},
+            {"cupboard":  "kitchen_cupboard"}
+        ]
+    },
+    "kitchen_cupboard": {
+        "description": "You open the cupboard and see a beautiful, golden, glowing rag. It's overwhelming beauty demands your attention. You have found the Rag, the final RAG, then end of all R.A.G. You found the end.",
+        "look": "You try to look around, but you can't. Because you found the ending R.A.G.",
+        "go": []
+    },
+    "<room_id>": {
+        "description": "<room_entry_description>",
+        "look": "<what_can_be_seen>",
+        "go": [
+            {"<direction>": "<room_id>"}
+        ]
+    }
+}
