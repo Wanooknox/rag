@@ -1,3 +1,5 @@
+use crate::interaction::command::Command;
+
 pub struct GoCommand {
     north_destination: String,
     east_destination: String,
