@@ -5,8 +5,11 @@ use log::{debug, error, info, trace, warn};
 use simplelog::*;
 
 use crate::user_interface::ui::{read_command, tell};
+use crate::interaction::command::{Command};
+use crate::interaction::look_command::LookCommand;
 
 mod user_interface;
+mod interaction;
 
 fn main() {
     initialize_global_loggers();
