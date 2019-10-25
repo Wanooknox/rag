@@ -1,10 +1,10 @@
 use crate::interaction::command::Command;
 
 pub struct GoCommand {
-    north_destination: String,
-    east_destination: String,
-    south_destination: String,
-    west_destination: String,
+    pub north_destination: String,
+    pub east_destination: String,
+    pub south_destination: String,
+    pub west_destination: String,
 }
 
 impl Command for GoCommand {

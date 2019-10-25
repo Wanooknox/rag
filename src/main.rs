@@ -7,7 +7,10 @@ use simplelog::*;
 use crate::user_interface::ui::{read_command, tell};
 use crate::interaction::command::{Command};
 use crate::interaction::look_command::LookCommand;
+use crate::commands::commands::CommandBuilder;
+use std::borrow::{Borrow, BorrowMut};
 
+mod commands;
 mod user_interface;
 mod interaction;
 
@@ -39,8 +42,11 @@ fn initialize_global_loggers() {
 }
 
 fn process_command(command: String) {
-    if command.as_str() == "quit" {
+    let com :&str = command.borrow();
+    if com == "quit" {
         exit(0);
     }
+
+    CommandBuilder::with(com.to_string(),Vec::new());
     tell(command);
 }
