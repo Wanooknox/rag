@@ -6,14 +6,19 @@ use log::{debug, error, info, trace, warn};
 use crate::boot::boot::boot;
 use crate::interaction::command::Command;
 use crate::interaction::look_command::LookCommand;
+use crate::loading::room_reader::{read_rooms};
 use crate::user_interface::ui::{read_command, tell};
 
 mod user_interface;
 mod interaction;
+mod loading;
 mod boot;
 
 fn main() {
     boot();
+
+    let rooms = read_rooms("resources/rooms.json".to_string());
+    println!("{}", rooms);
 
     println!("Hello, world!");
     info!("Hello Info");
