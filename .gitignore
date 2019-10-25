@@ -101,3 +101,7 @@ Cargo.lock
 **/*.rs.bk
 
 # End of https://www.gitignore.io/api/rust,clion+all
+
+
+# Custom Entries
+my_rust_binary.log
