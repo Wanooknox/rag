@@ -1,14 +1,17 @@
 
 use std::process::exit;
+use std::borrow::{Borrow, BorrowMut};
 
 use log::{debug, error, info, trace, warn};
 
 use crate::boot::boot::boot;
 use crate::interaction::command::Command;
 use crate::interaction::look_command::LookCommand;
+use crate::commands::commands::CommandBuilder;
 use crate::loading::room_reader::{read_rooms};
 use crate::user_interface::ui::{read_command, tell};
 
+mod commands;
 mod user_interface;
 mod interaction;
 mod loading;
@@ -35,8 +38,11 @@ fn main() {
 }
 
 fn process_command(command: String) {
-    if command.as_str() == "quit" {
+    let com :&str = command.borrow();
+    if com == "quit" {
         exit(0);
     }
+
+    CommandBuilder::with(com.to_string(),Vec::new());
     tell(command);
 }
