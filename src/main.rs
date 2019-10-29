@@ -1,21 +1,27 @@
-use std::fs::File;
+
 use std::process::exit;
+use std::borrow::{Borrow, BorrowMut};
 
 use log::{debug, error, info, trace, warn};
-use simplelog::*;
 
-use crate::user_interface::ui::{read_command, tell};
-use crate::interaction::command::{Command};
+use crate::boot::boot::boot;
+use crate::interaction::command::Command;
 use crate::interaction::look_command::LookCommand;
 use crate::commands::commands::CommandBuilder;
-use std::borrow::{Borrow, BorrowMut};
+use crate::loading::room_reader::{read_rooms};
+use crate::user_interface::ui::{read_command, tell};
 
 mod commands;
 mod user_interface;
 mod interaction;
+mod loading;
+mod boot;
 
 fn main() {
-    initialize_global_loggers();
+    boot();
+
+    let rooms = read_rooms("resources/rooms.json".to_string());
+    println!("{}", rooms);
 
     println!("Hello, world!");
     info!("Hello Info");
@@ -29,16 +35,6 @@ fn main() {
         let command = read_command();
         process_command(command);
     }
-}
-
-fn initialize_global_loggers() {
-    CombinedLogger::init(
-        vec![
-            TermLogger::new(LevelFilter::Debug, Config::default(), TerminalMode::Mixed).unwrap(),
-            WriteLogger::new(LevelFilter::max(), Config::default(), File::create("my_rust_binary\
-            .log").unwrap()),
-        ]
-    ).unwrap();
 }
 
 fn process_command(command: String) {
